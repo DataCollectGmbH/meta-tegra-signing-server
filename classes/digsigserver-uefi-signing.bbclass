@@ -8,7 +8,7 @@ def tegra_uefi_signing_deps(d, tasks=False):
 
 TEGRA_UEFI_SIGNING_TASKDEPS ?= "${@tegra_uefi_signing_deps(d, tasks=True)}"
 TEGRA_UEFI_SIGNING_DEPENDS ?= "${@tegra_uefi_signing_deps(d)}"
-USE_UEFI_SIGNED_FILES = "true"
+TEGRA_UEFI_USE_SIGNED_FILES = "true"
 
 tegra_uefi_sbsign() {
     digsig_post sign/uefi -F "machine=${MACHINE}" -F "soctype=${SOC_FAMILY}" -F "bspversion=${L4T_VERSION}" -F "signing_type=sbsign" -F "artifact=@$1" --output $1
