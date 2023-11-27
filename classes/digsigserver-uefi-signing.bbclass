@@ -11,13 +11,13 @@ TEGRA_UEFI_SIGNING_DEPENDS ?= "${@tegra_uefi_signing_deps(d)}"
 TEGRA_UEFI_USE_SIGNED_FILES = "true"
 
 tegra_uefi_sbsign() {
-    digsig_post sign/uefi -F "machine=${MACHINE}" -F "signing_type=sbsign" -F "artifact=@$1" --output $1
+    digsig_post sign/tegra/uefi -F "machine=${MACHINE}" -F "signing_type=sbsign" -F "artifact=@$1" --output $1
 }
 
 tegra_uefi_split_sign() {
-    digsig_post sign/uefi -F "machine=${MACHINE}" -F "signing_type=signature" -F "artifact=@$1" --output "$1".sig
+    digsig_post sign/tegra/uefi -F "machine=${MACHINE}" -F "signing_type=signature" -F "artifact=@$1" --output "$1".sig
 }
 
 tegra_uefi_attach_sign() {
-    digsig_post sign/uefi -F "machine=${MACHINE}" -F "signing_type=attach_signature" -F "artifact=@$1" --output "$1".signed
+    digsig_post sign/tegra/uefi -F "machine=${MACHINE}" -F "signing_type=attach_signature" -F "artifact=@$1" --output "$1".signed
 }
