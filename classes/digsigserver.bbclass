@@ -1,4 +1,4 @@
-DIGSIG_SERVER ??= "http://127.0.0.1:9999"
+DIGSIG_SERVER ??= "http://host.docker.internal:9999"
 DIGSIG_SERVER[vardepvalue] = ""
 DIGSIG_DEPS = "curl-native:do_populate_sysroot"
 
