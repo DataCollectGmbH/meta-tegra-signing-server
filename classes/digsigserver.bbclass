@@ -7,6 +7,7 @@ DIGSIG_DEPS = "curl-native:do_populate_sysroot"
 # the signing server is handling multiple requests in parallel.
 DIGSIG_POST_ARGS ??= "--connect-timeout 30 --max-time 1800 --retry 4"
 DIGSIG_POST_ARGS[vardepvalue] = ""
+TEGRA_UEFI_SIGNING_FILECHECKSUMS = ""
 
 digsig_post() {
     local endpoint="$1"
