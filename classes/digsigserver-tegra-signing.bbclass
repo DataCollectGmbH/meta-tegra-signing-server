@@ -23,7 +23,7 @@ EOF
 
 tegraflash_custom_sign_pkg() {
     tegrasign_create_manifest ${LNXFILE}
-    tar -c -h -z -f ${WORKDIR}/tegrasign-in.tar.gz --exclude=${IMAGE_BASENAME}.img --exclude=${IMAGE_BASENAME}.squashfs *
+    tar -c -h -z -f ${WORKDIR}/tegrasign-in.tar.gz --exclude=${IMAGE_BASENAME}.img --exclude=${IMAGE_BASENAME}.ext4 --exclude=${IMAGE_BASENAME}.squashfs --exclude=storagepart.ext4 --exclude=data-partition.img *
     digsig_post sign/tegra -F "machine=${MACHINE}" -F "soctype=${SOC_FAMILY}" -F "bspversion=${L4T_VERSION}" -F "artifact=@${WORKDIR}/tegrasign-in.tar.gz" --output ${WORKDIR}/tegrasign-out.tar.gz
     tar -x -z -f ${WORKDIR}/tegrasign-out.tar.gz
     [ "${TEGRA_SIGNING_EXCLUDE_TOOLS}" != "1" ] || cp -R ${STAGING_BINDIR_NATIVE}/${FLASHTOOLS_DIR}/* .
